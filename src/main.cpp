@@ -13,13 +13,27 @@
  */
 
 #include <Arduino.h>
+#include "utiles/debug.h"
+#include "display/DisplayTFT.h"
 
 void setup()
 {
     Serial.begin(115200);
-    pinMode(0, INPUT_PULLUP);
     delay(1000);
-    Serial.println("Listo");
+    display.init();
+    pinMode(0, INPUT_PULLUP);  // por si uso el boton de BOOT
+    LogI(" Ancho: %d, Alto: %d", display.tft.width(), display.tft.height());
+
+    // muestro una sola vez el ojo entero:
+    display.showGIMPImage(0, 0, &ojo_img);
 }
 
-void loop() {}
+void loop()
+{
+    // Muestra la imagen en pantalla, pero primero restaura la pantalla con el rectangulo de la imagen del background.
+    int x = 43 + esp_random() % 69;
+    int y = 43 + esp_random() % 69;
+    display.copyImage(x, y, &pupila_img, &ojo_img);
+
+    delay(1000);
+}
