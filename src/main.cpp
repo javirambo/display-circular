@@ -21,19 +21,20 @@ void setup()
     Serial.begin(115200);
     delay(1000);
     display.init();
-    pinMode(0, INPUT_PULLUP);  // por si uso el boton de BOOT
-    LogI(" Ancho: %d, Alto: %d", display.tft.width(), display.tft.height());
 
     // muestro una sola vez el ojo entero:
     display.showGIMPImage(0, 0, &ojo_img);
 }
 
+int y = 0;
 void loop()
 {
-    // Muestra la imagen en pantalla, pero primero restaura la pantalla con el rectangulo de la imagen del background.
-    int x = 43 + esp_random() % 69;
-    int y = 43 + esp_random() % 69;
-    display.copyImage(x, y, &pupila_img, &ojo_img);
-
-    delay(1000);
+    if (++y % 2 == 0)
+    {
+        // Muestra la imagen en pantalla, pero primero restaura la pantalla con el rectangulo de la imagen del background.
+        int x = 43 + esp_random() % 69;
+        int y = 43 + esp_random() % 69;
+        display.copyImage(x, y, &pupila_img, &ojo_img);
+        delay(1600);
+    }
 }

@@ -27,17 +27,8 @@
 
 #include <SPI.h>
 #include <TFT_eSPI.h>
-// #include "fonts/Free_Fonts.h"
-// #include "fonts/DSEG7_Classic_Regular_32.h"
-// #include "fonts/DSEG7_Classic_Regular_50.h"
-// #include "fonts/Roboto_Thin_14.h"
-// #include "fonts/Free_Fonts.h"
 #include "GimpImage.h"
 #include <vector>
-
-// #define ROB14  &Roboto_Thin_14
-// #define DSEG32 &DSEG7_Classic_Regular_32
-// #define DSEG50 &DSEG7_Classic_Regular_50
 
 class Display
 {

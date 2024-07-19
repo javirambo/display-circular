@@ -2,10 +2,6 @@
 #include <stdint.h>
 #include "iconos/ojo.h"
 #include "iconos/pupila.h"
-// #include "iconos/ojo1.h"
-// #include "iconos/ojo2.h"
-// #include "iconos/ojo3.h"
-// #include "iconos/ojo4.h"
 
 typedef struct
 {
@@ -26,7 +22,3 @@ typedef struct
 
 extern GimpImage_t ojo_img;
 extern GimpImage_t pupila_img;
-// extern GimpImage_t ojo1_img;
-// extern GimpImage_t ojo2_img;
-// extern GimpImage_t ojo3_img;
-// extern GimpImage_t ojo4_img;
