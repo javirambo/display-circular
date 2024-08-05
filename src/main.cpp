@@ -26,15 +26,29 @@ void setup()
     display.showGIMPImage(0, 0, &ojo_img);
 }
 
-int y = 0;
+int y      = 43;
+int x      = 43;
+uint32_t T = 0;
 void loop()
 {
-    if (++y % 2 == 0)
+    if (millis() < T) return;
+    T = millis() + 50;
+    display.copyImage(x, y, &pupila_img, &ojo_img);
+
+    x += 15;
+    if (x >= 112)
     {
-        // Muestra la imagen en pantalla, pero primero restaura la pantalla con el rectangulo de la imagen del background.
-        int x = 43 + esp_random() % 69;
-        int y = 43 + esp_random() % 69;
-        display.copyImage(x, y, &pupila_img, &ojo_img);
-        delay(1600);
+        x = 0;
+        y += 15;
+        if (y >= 112) y = 0;
     }
+
+    // if (++y % 2 == 0)
+    // {
+    //     // Muestra la imagen en pantalla, pero primero restaura la pantalla con el rectangulo de la imagen del background.
+    //     int x = 43 + esp_random() % 69;
+    //     int y = 43 + esp_random() % 69;
+    //     display.copyImage(x, y, &pupila_img, &ojo_img);
+    //     delay(333);
+    // }
 }

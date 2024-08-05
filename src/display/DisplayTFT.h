@@ -6,17 +6,23 @@
 
   ----------------------------------------------------
   IMPORTANTE:
-  Quitar de User_Setup.h todos los define y colocarlos en playformio.ini
+  No olvidarse de colocar esto en el .ini:
 
-  Estos son los pines a usar:
-    -DTFT_MOSI=23
-        -DTFT_MISO=19
-        -DTFT_CS=26
-        -DTFT_SCLK=18
-        -DTFT_DC=4
-        -DTFT_RST=-1
-        -DSPI_FREQUENCY=40000000
-        -DSPI_READ_FREQUENCY=20000000
+  build_flags =
+    -DUSER_SETUP_LOADED                  <== DESDE ACA ES SOLO PARA EL DISPLAY
+    -DDISABLE_ALL_LIBRARY_WARNINGS=1
+    -DGC9A01_DRIVER=1
+    -DTFT_CS=39
+    -DTFT_DC=40
+    -DTFT_MOSI=7
+    -DTFT_SCLK=15
+    -DTFT_MISO=6
+    -DTFT_RST=-1
+    -DLOAD_GFXFF=1
+    -DSPI_FREQUENCY=16000000
+    -DSPI_READ_FREQUENCY=20000000
+    -DSPI_TOUCH_FREQUENCY=2500000
+    -DTOUCH_CS=-1                        <== HASTA ACA
   ----------------------------------------------------
 
   JJTeam 2021
@@ -24,8 +30,6 @@
 
 #ifndef _display_tft_h
 #define _display_tft_h
-
-#include <SPI.h>
 #include <TFT_eSPI.h>
 #include "GimpImage.h"
 #include <vector>
